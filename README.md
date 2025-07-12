@@ -19,6 +19,17 @@ Merges multiple shapefiles into a single feature class within a file geodatabase
 - Updates, additions, and deletions based on `SOATO`
 - Memory-efficient in-memory processing
 
+### `update_geodatabase.py`
+
+Synchronizes a feature class in a file geodatabase with new shapefiles from a specified folder. It compares identifiers (e.g., `SOATO`), deletes outdated features, updates existing geometries, and inserts new records if needed. This script ensures that the geodatabase remains up-to-date with source data.
+
+**Used libraries**: `arcpy`, `os`, `re`  
+**Key logic**:
+- Shapefile parsing and identifier extraction
+- In-memory merging
+- Geometry comparison and update
+- Differential synchronization strategy
+
 **Usage example:**
 
 ```python
@@ -31,14 +42,3 @@ update_geodatabase(
     id_field_length=4
 )
 ```
-
-### `update_geodatabase.py`
-
-Synchronizes a feature class in a file geodatabase with new shapefiles from a specified folder. It compares identifiers (e.g., `SOATO`), deletes outdated features, updates existing geometries, and inserts new records if needed. This script ensures that the geodatabase remains up-to-date with source data.
-
-**Used libraries**: `arcpy`, `os`, `re`  
-**Key logic**:
-- Shapefile parsing and identifier extraction
-- In-memory merging
-- Geometry comparison and update
-- Differential synchronization strategy
